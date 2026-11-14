@@ -1,0 +1,27 @@
+{
+  "name": "agent-office",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@agent-office/core && npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present -- --passWithNoTests",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "dev": "npm run dev --workspaces --if-present",
+    "start": "sh -c 'npm run start --workspace=@agent-office/server & SERVER_PID=$!; npm run dev --workspace=@agent-office/ui; kill $SERVER_PID'"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "react-dom": "^18.2.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.2"
+  }
+}
